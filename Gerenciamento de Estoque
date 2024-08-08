@@ -1,0 +1,19 @@
+CREATE TABLE Produtos (
+    ProdutoID INT PRIMARY KEY,
+    Nome VARCHAR(100),
+    Categoria VARCHAR(50),
+    Preco DECIMAL(10, 2),
+    Quantidade INT
+);
+
+CREATE OR REPLACE PROCEDURE AdicionarProduto(
+    p_Nome VARCHAR,
+    p_Categoria VARCHAR,
+    p_Preco DECIMAL,
+    p_Quantidade INT
+) IS
+BEGIN
+    INSERT INTO Produtos (ProdutoID, Nome, Categoria, Preco, Quantidade)
+    VALUES (seq_produtos.NEXTVAL, p_Nome, p_Categoria, p_Preco, p_Quantidade);
+END;
+/
